@@ -14,18 +14,28 @@ $data = $object->getAll();
 <div class="card"><div class="card-body"><table id="data-list" class="table table-hover table-sm">
     <thead>
         <tr>
-            <th>Tipo</th>
-            <th>Codename</th>
             <th>Nombre</th>
-            <th class="no-sort">Acciones</th>
+            <th>Fecha y hora</th>
+            <th>Lugar</th>
+            <th>Responsable Interno</th>
+            <th>Responsable Externo</th>
+            <th>Costo interno</th>
+            <th>Costo externo</th>
+            <th>Registro</th>
+
         </tr>
     </thead>
     <tbody>
         <?php foreach ($data as $permiso) : ?>
             <tr>
-                <td><?= htmlspecialchars($permiso['tipo']) ?></td>
-                <td><?= htmlspecialchars($permiso['codename']) ?></td>
                 <td><?= htmlspecialchars($permiso['nombre']) ?></td>
+                <td><?= htmlspecialchars($permiso['fecha_hora']) ?></td>
+                <td><?= htmlspecialchars($permiso['lugar']) ?></td>
+                <td><?= htmlspecialchars($permiso['responsable_interno']) ?></td>
+                <td><?= htmlspecialchars($permiso['responsable_externo']) ?></td>
+                <td><?= htmlspecialchars($permiso['costo_interno']) ?></td>
+                <td><?= htmlspecialchars($permiso['costo_externo']) ?></td>
+                <td><?= htmlspecialchars($permiso['requiere_registro']) ?></td>
                 <td class="text-center">
                     <a class="btn btn-outline-secondary" href="eventos.php?accion=mostrar&pk=<?= urlencode($permiso['id']) ?>">
                         <i class="fa-regular fa-eye"></i>
