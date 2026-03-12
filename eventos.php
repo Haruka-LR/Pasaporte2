@@ -1,17 +1,12 @@
 <?php
-/**
- * Punto de entrada: Eventos
- * Carga modelos y delega la lógica al controlador.
- */
+
 include_once 'app/usuario/model.php';
 session_start();
 
 include_once 'helpers/vars.php';
 include_once 'app/evento/model.php';
-
-// El controlador procesa POST/GET y redirige si tiene éxito,
-// o deja $accion / $object / $errors para la vista.
 include_once 'app/evento/controller.php';
+
 ?><!DOCTYPE html>
 <html lang="es-MX">
 <head>
@@ -23,7 +18,6 @@ include_once 'app/evento/controller.php';
     <main class="container">
         <h1>Eventos</h1>
 
-        <?php // ── Mensajes de éxito ──────────────────────────────────────── ?>
         <?php $ok = getvar('ok') ?? ''; ?>
 
         <?php if ($ok === 'creado'): ?>
@@ -46,7 +40,6 @@ include_once 'app/evento/controller.php';
             </div>
         <?php endif; ?>
 
-        <?php // ── Mensajes de error ──────────────────────────────────────── ?>
         <?php foreach ($errors as $error): ?>
             <div class="alert alert-danger">
                 <i class="fa-solid fa-triangle-exclamation"></i>
@@ -54,7 +47,6 @@ include_once 'app/evento/controller.php';
             </div>
         <?php endforeach; ?>
 
-        <?php // ── Vista según acción ─────────────────────────────────────── ?>
         <?php if ($accion === 'crear'): ?>
             <?php include 'app/evento/crear.php'; ?>
         <?php elseif ($accion === 'actualizar'): ?>

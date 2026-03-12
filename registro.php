@@ -2,8 +2,6 @@
 include_once "app/usuario/model.php";
 session_start();
 
-// El controlador maneja toda la lógica de negocio y redirige si es necesario.
-// Al terminar, las variables $accion, $object y $errors quedan disponibles para la vista.
 include_once 'app/registro/controller.php';
 ?><!DOCTYPE html>
 <html lang="es-MX">
