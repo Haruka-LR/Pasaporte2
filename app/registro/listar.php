@@ -125,15 +125,4 @@ $categorias = $object->getCategorias();
     </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    if ($.fn.DataTable.isDataTable('#data-list')) {
-        $('#data-list').DataTable().destroy();
-    }
-    $('#data-list').DataTable({
-        responsive: true,
-        order: [[6, 'desc']],
-        columnDefs: [{ orderable: false, targets: -1 }]
-    });
-});
-</script>
+<script src="assets/js/registro.js"></script>
