@@ -4,6 +4,14 @@ $data = $object->getAll();
 
 <div class="clearfix mb-3">
 <div class="btn-group float-end" role="group" aria-label="Barra de Herramientas">
+
+    <?php if($_SESSION["current_user"]->can("usuario.change_usuario")): ?>
+    <a type="button" class="btn btn-outline-secondary" href="usuarios.php?accion=restaurar-pwd">
+        <i class="fa-solid fa-key"></i>
+        Restaurar Contraseña
+    </a>
+    <?php endif; ?>
+
     <?php if ($_SESSION["current_user"]->can("usuario.add_usuario_masivo")): ?>
         <a type="button" class="btn btn-outline-primary" href="usuarios.php?accion=carga-masiva">
             <i class="fa-solid fa-rectangle-list"></i>
@@ -27,7 +35,6 @@ $data = $object->getAll();
             <th>Matricula</th>
             <th>Grupo</th>
             <th>Comunicación</th>
-            <th>SU</th>
             <th class="no-sort">Acciones</th>
         </tr>
     </thead>
@@ -39,7 +46,9 @@ $data = $object->getAll();
                         <input class="form-check-input" type="checkbox" role="switch" <?php echo $usuario["activo"] ? 'checked="checked"' : ''; ?> disabled="disabled" />
                     </div>
                 </td>
-                <td><?php echo htmlspecialchars(trim($usuario["nombre"] . " " . $usuario["apaterno"] . " " . $usuario["amaterno"])); ?></td>
+                <td class="<?php echo $usuario["superusuario"] ? 'text-info' : ''; ?>">
+                    <?php echo htmlspecialchars(trim($usuario["nombre"] . " " . $usuario["apaterno"] . " " . $usuario["amaterno"])); ?>
+                </td>
                 <td><?php echo htmlspecialchars($usuario["matricula"] ?? ""); ?></td>
                 <td><?php echo htmlspecialchars($usuario["grupo"] ?? ""); ?></td>
                 <td>
@@ -57,11 +66,6 @@ $data = $object->getAll();
                         <!-- WhatsApp -->
                     </a>
                     <?php endif; ?>
-                </td>
-                <td>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch" <?php echo $usuario["superusuario"] ? 'checked="checked"' : ''; ?> disabled="disabled" />
-                    </div>
                 </td>
                 <td class="text-center">
                     <?php if($_SESSION["current_user"]->can("usuario.view_usuario")): ?>
